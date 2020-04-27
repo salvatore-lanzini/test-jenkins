@@ -1,27 +1,29 @@
 pipeline{
     agent any
     stages{
-        stage('Compile'){
+        stage('Build'){
             steps{
-                echo "Compiled Succesfully!"
+                echo "Running Build!"
+                bat "mvn clean install -P dev -DskipTests"
             }
         }
 
         stage('Test'){
             steps{
-                echo "JUnit Test Succesfully!"
+                echo "Test are Skipped!"
             }
         }
 
         stage('Quality-Gate'){
             steps{
-                echo "SonarQube Quality Gate Compiled Succesfully!"
+                echo "Quality Gate are skipped!"
             }
         }
 
         stage('Deploy'){
             steps{
-                echo "Deploy Succesfully!"
+                echo "Running Deploy!"
+                bat "java -jar test-jenkins-0.0.1-SNAPSHOT.jar"
             }
         }
     }
