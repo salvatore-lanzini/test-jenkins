@@ -4,8 +4,9 @@ pipeline{
         stage('Build'){
             steps{
                 echo "Running Build!"
-                bat "cd test-jenkins"
-                bat "mvn clean install -DskipTests"
+                dir("test-jenkins"){
+                    bat "mvn clean install -DskipTests"
+                }
             }
         }
 
@@ -24,8 +25,9 @@ pipeline{
         stage('Deploy'){
             steps{
                 echo "Running Deploy!"
-                bat "cd test-jenkins\target"
-                bat "java -jar test-jenkins-0.0.1-SNAPSHOT.jar"
+                dir("test-jenkins\target"){
+                    bat "java -jar test-jenkins-0.0.1-SNAPSHOT.jar"
+                }
             }
         }
     }
