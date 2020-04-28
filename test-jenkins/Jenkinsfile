@@ -12,7 +12,7 @@ pipeline{
 
         stage('Test'){
             steps{
-                echo "Test are Skipped!"
+                echo "Test from poll push on dev!"
             }
         }
 
