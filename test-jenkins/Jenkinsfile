@@ -12,7 +12,7 @@ node{
         }
 
         stage('Quality-Gate'){
-                echo "Quality Gate are skipped!"
+                echo "Quality Gate are skipped! Test Poll"
         }
 
         stage('Build And Push Image'){
