@@ -5,7 +5,7 @@ pipeline{
             steps{
                 echo "Running Build!"
                 dir("test-jenkins"){
-                    bat "mvn clean install -P dev -DskipTests"
+                    sh "mvn clean install -P dev -DskipTests"
                 }
             }
         }
