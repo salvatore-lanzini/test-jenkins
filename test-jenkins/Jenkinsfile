@@ -1,48 +1,35 @@
 pipeline{
-    agent any
-    stages{
-        stage('Build'){
-            steps{
-                echo "Running Build!"
-                dir("test-jenkins"){
+    dir("test-jenkins"){
+        def app
+        stages{
+            stage('Build'){
+                steps{
+                    echo "Running Build!"
                     sh "mvn clean install -P dev -DskipTests"
                 }
             }
-        }
 
-        stage('Test'){
-            steps{
-                echo "Test from poll push on dev! test 5"
+            stage('Test'){
+                steps{
+                    echo "Test are skipped"
+                }
             }
-        }
 
-        stage('Quality-Gate'){
-            steps{
-                echo "Quality Gate are skipped!"
+            stage('Quality-Gate'){
+                steps{
+                    echo "Quality Gate are skipped!"
+                }
             }
-        }
 
-        stage('Deploy'){
-            steps{
-                echo "Running Deploy!"
+            stage('Build Image'){
+                app = docker.build(slanzini/test-jenkins)
             }
-        }
-    }
-    post{
-        always{
-            echo "This will always run"
-        }
-        success{
-            echo "This will run only if succesfull"
-        }
-        failure{
-            echo "This will run only if failed"
-        }
-        unstable{
-            echo "This will run only if the run was marked as unstable"
-        }
-        changed{
-            echo "This will run only if the state of the Pipeline has changed"
+
+            stage('Push Image'){
+                docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
+                    app.push("1.0.0")
+                }
+            }
         }
     }
 }
