@@ -1,6 +1,5 @@
 node{
     def app
-    stages{
         stage('Build'){
             steps{
                 echo "Running Build!"
@@ -33,5 +32,4 @@ node{
                 app.push("1.0.0")
             }
         }
-    }
 }
