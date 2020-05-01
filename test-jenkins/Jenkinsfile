@@ -1,9 +1,8 @@
 node{
     def app
         stage('Build'){
-                echo "Running Build!"
                 dir("test-jenkins"){
-                    sh "mvn clean install -P dev -DskipTests"
+                    sh "mvn clean package -P dev -DskipTests"
                 }
         }
 
@@ -12,7 +11,7 @@ node{
         }
 
         stage('Quality-Gate'){
-                echo "Quality Gate are skipped! Test Poll"
+                echo "Quality Gate are skipped!"
         }
 
         stage('Build And Push Image'){
@@ -24,7 +23,8 @@ node{
             }
         }
 
-        stage('List pods') {
-            sh 'kubectl get pods'
+        stage('Deploy') {
+            sh 'kubectl scale deployments test-jenkins --replicas=0'
+            sh 'kubectl scale deployments test-jenkins --replicas=1'
         }
 }

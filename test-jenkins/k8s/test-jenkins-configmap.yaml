@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  application-prod.yaml: |
+    server.servlet.context-path: /test-jenkins
+    server.port: 8880
+kind: ConfigMap
+metadata:
+  name: test-jenkins-cfg
+  namespace: udm
