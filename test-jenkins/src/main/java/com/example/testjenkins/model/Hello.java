@@ -19,4 +19,10 @@ public class Hello {
         hello.setHello("World");
         return hello;
     }
+
+    public static Hello name(String name){
+        Hello hello = new Hello();
+        hello.setHello(name);
+        return hello;
+    }
 }
