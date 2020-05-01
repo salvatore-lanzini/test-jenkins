@@ -1,24 +1,18 @@
 node{
     def app
         stage('Build'){
-            steps{
                 echo "Running Build!"
                 dir("test-jenkins"){
                     sh "mvn clean install -P dev -DskipTests"
                 }
-            }
         }
 
         stage('Test'){
-            steps{
                 echo "Test are skipped"
-            }
         }
 
         stage('Quality-Gate'){
-            steps{
                 echo "Quality Gate are skipped!"
-            }
         }
 
         stage('Build Image'){
