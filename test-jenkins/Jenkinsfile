@@ -1,5 +1,9 @@
 node{
     def app
+        stage('Checkout git'){
+            checkout scm
+        }
+
         stage('Build'){
                 dir("test-jenkins"){
                     sh "mvn clean package -P dev -DskipTests"
