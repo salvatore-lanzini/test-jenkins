@@ -23,4 +23,12 @@ node{
                 }
             }
         }
+
+        stage('List pods') {
+            withKubeCredentials([
+                [credentialsId: 'kubectl-udm', serverUrl: 'https://10.206.195.55/', clusterName: 'giottodevk8s', namespace: 'udm'],
+            ]) {
+              sh 'kubectl get pods'
+            }
+        }
 }
