@@ -1,34 +1,37 @@
 pipeline{
-    dir("test-jenkins"){
-        def app
-        stages{
-            stage('Build'){
-                steps{
-                    echo "Running Build!"
+    agent any
+    def app
+    stages{
+        stage('Build'){
+            steps{
+                echo "Running Build!"
+                dir("test-jenkins"){
                     sh "mvn clean install -P dev -DskipTests"
                 }
             }
+        }
 
-            stage('Test'){
-                steps{
-                    echo "Test are skipped"
-                }
+        stage('Test'){
+            steps{
+                echo "Test are skipped"
             }
+        }
 
-            stage('Quality-Gate'){
-                steps{
-                    echo "Quality Gate are skipped!"
-                }
+        stage('Quality-Gate'){
+            steps{
+                echo "Quality Gate are skipped!"
             }
+        }
 
-            stage('Build Image'){
+        stage('Build Image'){
+            dir("test-jenkins"){
                 app = docker.build(slanzini/test-jenkins)
             }
+        }
 
-            stage('Push Image'){
-                docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
-                    app.push("1.0.0")
-                }
+        stage('Push Image'){
+            docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
+                app.push("1.0.0")
             }
         }
     }
