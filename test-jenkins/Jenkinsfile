@@ -15,16 +15,12 @@ node{
                 echo "Quality Gate are skipped!"
         }
 
-        stage('Build Image'){
+        stage('Build And Push Image'){
             dir("test-jenkins"){
-                app = docker.build(slanzini/test-jenkins)
-            }
-        }
-
-        stage('Push Image'){
-            docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
-                app.push("${env.BUILD_NUMBER}")
-                app.push("1.0.0")
+                docker.withRegistry('https://registry.hub.docker.com','docker-hub'){
+                    app = docker.build("slanzini/test-jenkins:1.0.0")
+                    app.push()
+                }
             }
         }
 }
