@@ -26,49 +26,10 @@ node{
 
         stage('List pods') {
             withKubeCredentials([
-                [credentialsId: 'kubectl-udm', caCertificate: 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM3akNDQ\
-                  WRhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFvTVJJd0VBWURWUVFLRXdsMGFHVXQKY\
-                  21GdVkyZ3hFakFRQmdOVkJBTVRDV05oZEhSc1pTMWpZVEFlRncweU1EQXlNRFl4TVRJd05EWmFGd\
-                  zB6TURBeQpNRE14TVRJd05EWmFNQ2d4RWpBUUJnTlZCQW9UQ1hSb1pTMXlZVzVqYURFU01CQUdBM\
-                  VVFQXhNSlkyRjBkR3hsCkxXTmhNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ\
-                  0tDQVFFQXJXcnlmbmFWQUJ3eC9pTk0KRlBPdW1BQ0thYVg2MmoxZEFMYXN5OW5CRGtLZUptdStZR\
-                  TNNUWJheFZaWmhFSjZCUVZpMlNiV3BrZ0poZEE3eApjeTBOVWh1bExHUklVa3AraHBwY055UVZqS\
-                  kMzaUg1ellqSXBHQ1F1SmY4bjVmRzF3NHVHekJmTU9KWXdyVjFhCnlGOWtmQ1oxekI0Rk1CdVh4R\
-                  0VqUXY1b3N5NUVQR1grdWErRFZ0QkFURnBMRXlLSFFCR0t1dVFTaGxhYnNFa2oKamQrMW00SnRWQ\
-                  WxsWEFHNWJMUERyUWdMYWROYllOa21pSkJuUW56RkEyazc3cUIvVVl1TnhNWUx4WVVFRkJvWApaO\
-                  DRFY29CSVUyS0YrV0xSR3NQSks3NjlySEtFTm1zeW55YnZUQS93c3pHaTRoTHlrRnJVRXVqOTNVT\
-                  3M0bUR6CkFSV2RtUUlEQVFBQm95TXdJVEFPQmdOVkhROEJBZjhFQkFNQ0FxUXdEd1lEVlIwVEFRS\
-                  C9CQVV3QXdFQi96QU4KQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBY3BLVHZ5SFgzcHMyRlRnbklHa\
-                  Wdyd05WSnBPRmY2UDZLSVJpbDA3eQpWNThzV2QwQ3lFeERkZUEzWGNEL3BZTmJ0M1FEUzFYNlQwT\
-                  EVmZnYrK3VsaCtnczRwTzJGakxQd20xOGxkZnlkCjFOd2xQc2NGQ0N3dzN0anNSYW0rcjYrNnFCN\
-                  EMwWGdDM3NScVAvVkRnVk5UZGxtU1hhV3Z3ZWhJd0VQMUx1dmwKak43cDZGRGEzSU1iWTVlNlVHY\
-                  XU3WFVPR1VDczJSQ1l6TEp4RUwvTFA2dzB0QkxQWkRzVGFLZmNqVE9WeXdrRwpBUmVOM2M5YXIxc\
-                  FhtdU1tZlpzdTlobHJvcm5LYVFYMXJuYi8zMzJkM3BIdlQ3R25QSXNDb2N6UjRFaGRXRmQxCk5RY\
-                  VpGUG92NlpMQmU1c1gzQWJpR1dJSDYvVUdKWVdIeUlLcTMyMmdaQVZFMEE9PQotLS0tLUVORCBDR\
-                  VJUSUZJQ0FURS0tLS0t',
-                 serverUrl: 'https://10.206.195.55/k8s/clusters/c-zq4j8',
+                [credentialsId: 'kubectl-udm', serverUrl: 'https://10.206.195.55/k8s/clusters/c-zq4j8',
                  clusterName: 'giottodevk8s', contextName: 'giottodevk8s'],
-                [credentialsId: 'kubectl-udm', caCertificate: 'LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN3akNDQ\
-                  WFxZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\
-                  FdOaE1CNFhEVEl3TURJeE1URXdOVFkxTkZvWERUTXdNREl3T0RFd05UWTFORm93RWpFUU1BNEdBM\
-                  VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\
-                  0VCQUx6VWJBSlpTUWpTClp4VVI3WGNhek9ZaDRpbHQ5VlEyczE1YmVEUHJibkt1TkMrcS8rU1hoT\
-                  ENuQWxWaUNTcDJKZFhOWEIvVDRsTUQKL1REUVJQb3JWUjVrRjYyWDRKRGRESnp6SCtsdEp5d2x4M\
-                  lZIem1hS2g5ZWlsRzg3QnRuNGdVcHhMWTFKNFdjVApDNVlsU0VuWmlLZzFacVlsclI3ZVJKQXVBR\
-                  mRmZWtaL2lZK0NDY2U2QlpicHJDejByUDRRSnhxTWV1Ykg3ZXZNCjFYeVlvRk9kNnM4MkY2UERPL\
-                  0V1OXp1V0dVOUZDVWRkZGhJNnhQcWoyRGUvbFcrdTFuRmYxYXFBMWxRMWhwVmYKakR6L0ZDV1lre\
-                  FdnemJ3bzZnVXNteHg0K2pzVDI3QmJ4V09JVWhMUml5dmZaWm84aEt5TFdUZU9GVkRsdytYLwpVT\
-                  WxudjFjLzVma0NBd0VBQWFNak1DRXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
-                  UZNQU1CCkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRlcxN3ArUHZOZnJVWnBOZWZoNjFhT\
-                  nI5V2JuMUltdVB3VGcKRlBwQlMzczk3dFA3RWRjWmN1NnhkektGdFhMM1dJbCtDVDhISkIzWVU0U\
-                  2NQKytNRllpa2doNTh1VEU0S3AzNQorazNxcWRRTUhKZzNaWnJmSVNDQjFOdGpqSyt3bmliTHRma\
-                  GtXOTlvTi9SMnZiOERRejFSVndCWm9pQ0JVR2diCmVEMndPaks3YmVQTTA0b1hVa2tzMEZkRDhXY\
-                  jFIVmpObGlqNys2cStwNkR6bzQ3NVlLcDhkaTRzWC9JSWxMRVEKNzJXL1lIdnFHemkzdXkvYXRMU\
-                  UhmL2o1cmJvRVRqbzRuUzhzVkc2WUZXNmlES2xucUJEWGdVSTFvQ25qQTFGWgpiQnJWcDk3UXZRM\
-                  jFtUkRnTVVDdjRHK3JoZTRsVkRjczhNQ1NnYmFISTBXd1FCSmpSMGc9Ci0tLS0tRU5EIENFUlRJR\
-                  klDQVRFLS0tLS0K',
-                serverUrl: 'https://10.206.195.41:6443', clusterName: 'giottodevk8s-giottowrkawldev02',
-                 contextName: 'giottodevk8s-giottowrkawldev02']
+                [credentialsId: 'kubectl-udm', serverUrl: 'https://10.206.195.41:6443',
+                 clusterName: 'giottodevk8s-giottowrkawldev02', contextName: 'giottodevk8s-giottowrkawldev02']
             ]) {
               sh 'kubectl get pods -n udm'
             }
