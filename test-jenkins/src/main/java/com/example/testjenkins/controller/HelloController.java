@@ -21,4 +21,7 @@ public class HelloController {
 
     @GetMapping("test")
     public ResponseEntity<Hello> helloTest(@RequestParam String test){ return ResponseEntity.ok(Hello.name(test)); }
+
+    @GetMapping("test2")
+    public ResponseEntity<Hello> helloTest2(@RequestParam String test){ return ResponseEntity.ok(Hello.name(test)); }
 }
